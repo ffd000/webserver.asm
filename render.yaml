@@ -1,0 +1,9 @@
+name: webserver
+services:
+  - name: alpine
+    buildCommand:
+      - apk add --no-cache curl && apk add --no-cache fasm
+      - curl -sL "https://flatassembler.net/fasm-1.73.30.tgz" | tar xz
+      - ln -s /fasm/fasm /bin/fasm
+      - fasm index.asm && index
+    image: alpine
